@@ -7,6 +7,7 @@ import { ThemeStore } from "../../stores/themeStore";
 import { MainWrapper } from "../main-wrapper/MainWrapper";
 import AddInput from "../add-input";
 import TodoList from "../todo-list";
+import todoStore from "../../stores/todoStore";
 
 const themeSt = new ThemeStore();
 

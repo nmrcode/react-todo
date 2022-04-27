@@ -1,41 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Checkbox, List, ListItem, Title, Wrapper } from "./TodoListEl";
+import todoStore from "../../stores/todoStore";
+import { observer } from "mobx-react-lite";
 
-const TodoList = () => {
+const TodoList = observer(() => {
   return (
     <Wrapper>
       <Title>Активные</Title>
       <List>
-        <ListItem>
-          <Checkbox />
-          <span>Название</span>
-        </ListItem>
-        <ListItem>
-          <Checkbox />
-          <span>Название</span>
-        </ListItem>
-        <ListItem>
-          <Checkbox />
-          <span>Название</span>
-        </ListItem>
+        {todoStore.todos.map((todo) => {
+          return (
+            <ListItem key={todo.id}>
+              <Checkbox checked={todo.completed} />
+              <span>{todo.title}</span>
+            </ListItem>
+          );
+        })}
       </List>
       <Title>Выполненные</Title>
-      <List>
-        <ListItem>
-          <Checkbox />
-          <span>Название</span>
-        </ListItem>
-        <ListItem>
-          <Checkbox />
-          <span>Название</span>
-        </ListItem>
-        <ListItem>
-          <Checkbox />
-          <span>Название</span>
-        </ListItem>
-      </List>
     </Wrapper>
   );
-};
+});
 
 export default TodoList;
