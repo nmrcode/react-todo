@@ -27,7 +27,7 @@ const TodoList = observer(() => {
           })
         ) : (
           <ListItem style={{ cursor: "default" }}>
-            <span>Нет активных задач</span>
+            <span>Еще не было задач </span>
           </ListItem>
         )}
       </List>

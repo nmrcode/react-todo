@@ -11,6 +11,10 @@ export const Wrapper = styled.div`
 
   box-shadow: ${({ theme }) => theme.shadow};
   border-radius: ${({ theme }) => theme.radii};
+  @media (max-width: 768px) {
+    padding: 0 15px;
+    font-size: 14px;
+  }
 `;
 
 export const Input = styled.input`

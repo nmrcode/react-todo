@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   padding-top: 101px;
+  @media (max-width: 768px) {
+    padding-top: 30px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -33,10 +36,17 @@ export const ListItem = styled.div`
   box-shadow: ${({ theme }) => theme.shadowItem};
   border-radius: ${({ theme }) => theme.radii};
   text-decoration: ${(props) => (props.checked ? `line-through` : `none`)};
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 20px 15px;
+  }
 `;
 
 export const Checkbox = styled.input.attrs({
   type: "checkbox",
 })`
   margin-right: 27px;
+  @media (max-width: 768px) {
+    margin-right: 10px;
+  }
 `;
