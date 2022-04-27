@@ -8,26 +8,39 @@ const TodoList = observer(() => {
     <Wrapper>
       <Title>Активные</Title>
       <List>
-        {todoStore.todos.map((todo) => {
-          if (!todo.completed) {
-            return (
-              <ListItem key={todo.id}>
-                <Checkbox
-                  checked={todo.completed}
-                  onChange={() => todoStore.toggleTodo(todo.id)}
-                />
-                <span>{todo.title}</span>
-              </ListItem>
-            );
-          }
-        })}
+        {todoStore.todos.length ? (
+          todoStore.todos.map((todo) => {
+            if (!todo.completed) {
+              return (
+                <ListItem
+                  key={todo.id}
+                  onClick={() => todoStore.toggleTodo(todo.id)}
+                >
+                  <Checkbox
+                    checked={todo.completed}
+                    onChange={() => todoStore.toggleTodo(todo.id)}
+                  />
+                  <span>{todo.title}</span>
+                </ListItem>
+              );
+            }
+          })
+        ) : (
+          <ListItem style={{ cursor: "default" }}>
+            <span>Нет активных задач</span>
+          </ListItem>
+        )}
       </List>
       <Title>Выполненные</Title>
       <List>
         {todoStore.todos.map((todo) => {
           if (todo.completed) {
             return (
-              <ListItem key={todo.id}>
+              <ListItem
+                key={todo.id}
+                onClick={() => todoStore.toggleTodo(todo.id)}
+                checked={todo.completed}
+              >
                 <Checkbox
                   checked={todo.completed}
                   onChange={() => todoStore.toggleTodo(todo.id)}
