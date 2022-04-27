@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import { ThemeStore } from "../../stores/themeStore";
 import { MainWrapper } from "../main-wrapper/MainWrapper";
 import AddInput from "../add-input";
+import TodoList from "../todo-list";
 
 const themeSt = new ThemeStore();
 
@@ -14,7 +15,9 @@ const App = observer(() => {
     <ThemeProvider theme={themeSt.theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <MainWrapper>
+        {/*Инпут для добавления задачи*/}
         <AddInput />
+        <TodoList />
       </MainWrapper>
     </ThemeProvider>
   );
