@@ -12,4 +12,6 @@ class ThemeStore {
   };
 }
 
-export { ThemeStore };
+const store = new ThemeStore();
+
+export default store;
