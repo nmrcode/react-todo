@@ -9,6 +9,7 @@ class TodoStore {
       todos: observable,
       inputValue: observable,
       addTodo: action,
+      toggleTodo: action,
     });
   }
 
@@ -20,6 +21,13 @@ class TodoStore {
         completed: false,
       };
       this.todos.push(item);
+    }
+  }
+
+  toggleTodo(id) {
+    const index = this.todos.findIndex((item) => item.id === id);
+    if (index > -1) {
+      this.todos[index].completed = !this.todos[index].completed;
     }
   }
 }
