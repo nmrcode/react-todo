@@ -4,6 +4,11 @@ import todoStore from "../../stores/todoStore";
 import { observer } from "mobx-react-lite";
 import { AiOutlineDelete } from "react-icons/ai";
 
+const itemAnim = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
+
 const TodoList = observer(() => {
   return (
     <Wrapper>
@@ -13,7 +18,12 @@ const TodoList = observer(() => {
           todoStore.todos.map((todo) => {
             if (!todo.completed) {
               return (
-                <ListItem key={todo.id}>
+                <ListItem
+                  key={todo.id}
+                  variants={itemAnim}
+                  initial="hidden"
+                  animate="visible"
+                >
                   <Checkbox
                     checked={todo.completed}
                     onChange={() => todoStore.toggleTodo(todo.id)}
@@ -30,7 +40,7 @@ const TodoList = observer(() => {
             }
           })
         ) : (
-          <ListItem>
+          <ListItem variants={itemAnim} initial="hidden" animate="visible">
             <span style={{ cursor: "default" }}>Еще не было задач </span>
           </ListItem>
         )}
@@ -40,7 +50,12 @@ const TodoList = observer(() => {
         {todoStore.todos.map((todo) => {
           if (todo.completed) {
             return (
-              <ListItem key={todo.id}>
+              <ListItem
+                key={todo.id}
+                variants={itemAnim}
+                initial="hidden"
+                animate="visible"
+              >
                 <Checkbox
                   checked={todo.completed}
                   onChange={() => todoStore.toggleTodo(todo.id)}
