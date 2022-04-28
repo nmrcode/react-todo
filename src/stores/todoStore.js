@@ -1,13 +1,12 @@
 import { action, makeObservable, observable } from "mobx";
+import { injectStores } from "@mobx-devtools/tools";
 
 class TodoStore {
   todos = [];
-  inputValue = "";
 
   constructor() {
     makeObservable(this, {
       todos: observable,
-      inputValue: observable,
       addTodo: action,
       toggleTodo: action,
     });
@@ -22,6 +21,11 @@ class TodoStore {
       };
       this.todos.push(item);
     }
+  }
+
+  removeTodo(id) {
+    const newList = this.todos.filter((todo) => todo.id !== id);
+    this.todos = newList;
   }
 
   toggleTodo(id) {

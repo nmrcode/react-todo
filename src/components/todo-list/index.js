@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Checkbox, List, ListItem, Title, Wrapper } from "./TodoListEl";
 import todoStore from "../../stores/todoStore";
 import { observer } from "mobx-react-lite";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const TodoList = observer(() => {
   return (
@@ -12,22 +13,24 @@ const TodoList = observer(() => {
           todoStore.todos.map((todo) => {
             if (!todo.completed) {
               return (
-                <ListItem
-                  key={todo.id}
-                  onClick={() => todoStore.toggleTodo(todo.id)}
-                >
+                <ListItem key={todo.id}>
                   <Checkbox
                     checked={todo.completed}
                     onChange={() => todoStore.toggleTodo(todo.id)}
                   />
-                  <span>{todo.title}</span>
+                  <span onClick={() => todoStore.toggleTodo(todo.id)}>
+                    {todo.title}
+                  </span>
+                  <AiOutlineDelete
+                    onClick={() => todoStore.removeTodo(todo.id)}
+                  />
                 </ListItem>
               );
             }
           })
         ) : (
-          <ListItem style={{ cursor: "default" }}>
-            <span>Еще не было задач </span>
+          <ListItem>
+            <span style={{ cursor: "default" }}>Еще не было задач </span>
           </ListItem>
         )}
       </List>
@@ -36,16 +39,17 @@ const TodoList = observer(() => {
         {todoStore.todos.map((todo) => {
           if (todo.completed) {
             return (
-              <ListItem
-                key={todo.id}
-                onClick={() => todoStore.toggleTodo(todo.id)}
-                checked={todo.completed}
-              >
+              <ListItem key={todo.id} checked={todo.completed}>
                 <Checkbox
                   checked={todo.completed}
                   onChange={() => todoStore.toggleTodo(todo.id)}
                 />
-                <span>{todo.title}</span>
+                <span onClick={() => todoStore.toggleTodo(todo.id)}>
+                  {todo.title}
+                </span>{" "}
+                <AiOutlineDelete
+                  onClick={() => todoStore.removeTodo(todo.id)}
+                />
               </ListItem>
             );
           }

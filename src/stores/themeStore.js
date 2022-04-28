@@ -1,4 +1,6 @@
 import { makeAutoObservable } from "mobx";
+import { injectStores } from "@mobx-devtools/tools";
+import todoStore from "./todoStore";
 
 class ThemeStore {
   theme = "dark";

@@ -20,14 +20,16 @@ const AddInput = () => {
           }
         }}
       />
-      <AiOutlineArrowRight
-        size={25}
-        onClick={() => {
-          todoStore.addTodo(value);
-          setValue("");
-        }}
-        style={{ cursor: "pointer" }}
-      />
+      {value.length ? (
+        <AiOutlineArrowRight
+          size={25}
+          onClick={() => {
+            todoStore.addTodo(value);
+            setValue("");
+          }}
+          style={{ cursor: "pointer" }}
+        />
+      ) : null}
     </Wrapper>
   );
 };

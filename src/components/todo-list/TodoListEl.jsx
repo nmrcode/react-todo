@@ -25,7 +25,6 @@ export const List = styled.div`
 export const ListItem = styled.div`
   display: flex;
   align-items: center;
-  cursor: pointer;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
@@ -36,6 +35,22 @@ export const ListItem = styled.div`
   box-shadow: ${({ theme }) => theme.shadowItem};
   border-radius: ${({ theme }) => theme.radii};
   text-decoration: ${(props) => (props.checked ? `line-through` : `none`)};
+
+  span {
+    cursor: pointer;
+  }
+
+  svg {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: auto;
+    transition: fill 0.2s ease-in-out;
+
+    &:hover {
+      fill: tomato;
+    }
+  }
+
   @media (max-width: 768px) {
     font-size: 14px;
     padding: 20px 15px;
@@ -45,6 +60,8 @@ export const ListItem = styled.div`
 export const Checkbox = styled.input.attrs({
   type: "checkbox",
 })`
+  cursor: pointer;
+
   margin-right: 27px;
   @media (max-width: 768px) {
     margin-right: 10px;
