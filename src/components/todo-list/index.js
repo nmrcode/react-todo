@@ -18,9 +18,10 @@ const TodoList = observer(() => {
                     checked={todo.completed}
                     onChange={() => todoStore.toggleTodo(todo.id)}
                   />
-                  <span onClick={() => todoStore.toggleTodo(todo.id)}>
-                    {todo.title}
-                  </span>
+                  <div onClick={() => todoStore.toggleTodo(todo.id)}>
+                    <div>{todo.title}</div>
+                    <small>{todo.creationDate}</small>
+                  </div>
                   <AiOutlineDelete
                     onClick={() => todoStore.removeTodo(todo.id)}
                   />
@@ -39,14 +40,15 @@ const TodoList = observer(() => {
         {todoStore.todos.map((todo) => {
           if (todo.completed) {
             return (
-              <ListItem key={todo.id} checked={todo.completed}>
+              <ListItem key={todo.id}>
                 <Checkbox
                   checked={todo.completed}
                   onChange={() => todoStore.toggleTodo(todo.id)}
                 />
-                <span onClick={() => todoStore.toggleTodo(todo.id)}>
-                  {todo.title}
-                </span>{" "}
+                <div onClick={() => todoStore.toggleTodo(todo.id)}>
+                  <div>{todo.title}</div>
+                  <small>{todo.creationDate}</small>
+                </div>
                 <AiOutlineDelete
                   onClick={() => todoStore.removeTodo(todo.id)}
                 />

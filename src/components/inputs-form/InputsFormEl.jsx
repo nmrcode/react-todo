@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
 
   box-shadow: ${({ theme }) => theme.shadow};
   border-radius: ${({ theme }) => theme.radii};
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
   @media (max-width: 768px) {
     padding: 0 15px;
     font-size: 14px;

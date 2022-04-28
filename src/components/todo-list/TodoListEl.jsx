@@ -36,7 +36,7 @@ export const ListItem = styled.div`
   border-radius: ${({ theme }) => theme.radii};
   text-decoration: ${(props) => (props.checked ? `line-through` : `none`)};
 
-  span {
+  div {
     cursor: pointer;
   }
 

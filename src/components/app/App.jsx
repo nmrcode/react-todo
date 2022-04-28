@@ -5,7 +5,7 @@ import { darkTheme, lightTheme } from "../Themes";
 import { observer } from "mobx-react-lite";
 import store from "../../stores/themeStore";
 import { MainWrapper } from "../main-wrapper/MainWrapper";
-import AddInput from "../add-input";
+import AddInput from "../inputs-form";
 import TodoList from "../todo-list";
 import { ThemeTogglerIcon } from "../theme-toggler/ThemeTogglerIcon";
 import { AiFillBulb, AiOutlineBulb } from "react-icons/ai";
