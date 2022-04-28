@@ -1,5 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
-import { injectStores } from "@mobx-devtools/tools";
+import { action, autorun, makeObservable, observable, reaction } from "mobx";
 
 class TodoStore {
   todos = [];
@@ -20,6 +19,7 @@ class TodoStore {
         completed: false,
       };
       this.todos.push(item);
+      localStorage.setItem("todoList", JSON.stringify(this.todos));
     }
   }
 
@@ -38,4 +38,10 @@ class TodoStore {
 
 const todoStore = new TodoStore();
 
+autorun(() => {
+  const lsTodo = localStorage.getItem("todoList");
+  if (lsTodo) {
+    todoStore.todos = JSON.parse(lsTodo);
+  }
+});
 export default todoStore;
