@@ -1,11 +1,14 @@
 import { action, autorun, makeObservable, observable, reaction } from "mobx";
+import { logDOM } from "@testing-library/react";
 
 class TodoStore {
   todos = [];
+  filteredTodos = [];
 
   constructor() {
     makeObservable(this, {
       todos: observable,
+      filteredTodos: observable,
       addTodo: action,
       toggleTodo: action,
       removeTodo: action,
@@ -17,7 +20,6 @@ class TodoStore {
       const date = new Date();
       const today = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
 
-      console.log(today);
       const item = {
         id: +Math.random().toFixed(4),
         title,

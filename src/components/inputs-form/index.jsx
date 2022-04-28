@@ -5,19 +5,9 @@ import todoStore from "../../stores/todoStore";
 
 const AddInput = () => {
   const [value, setValue] = useState("");
-  const [searchValue, setSearchValue] = useState("");
+
   return (
     <>
-      <Wrapper>
-        <Input
-          placeholder="Найти задачу"
-          value={searchValue}
-          onChange={(e) => {
-            setSearchValue(e.target.value);
-          }}
-        />
-      </Wrapper>
-
       <Wrapper>
         <Input
           placeholder="Добавить новую задачу"
